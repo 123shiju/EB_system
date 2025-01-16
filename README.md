@@ -14,10 +14,10 @@ When a booking is made, RabbitMQ sends a message that simulates an email notific
 3.Prerequisites :-
 Before setting up the application, ensure you have the following installed on your local machine(only working in your local machine im not hosting anything in cloud):
 
-Node.js (version 14 or higher)
-MySQL (to store event and booking data)
-Redis (for caching booking counts)
-RabbitMQ (for simulating email notifications)
+Node.js (version 14 or higher) ,
+MySQL (to store event and booking data) ,
+Redis (for caching booking counts) ,
+RabbitMQ (for simulating email notifications) ,
 
 
 4.Setting Up the Environment :-
