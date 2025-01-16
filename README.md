@@ -5,14 +5,14 @@ This is  only server side code built with Node.js that allows users to create ev
 
 
 2.Key Features :-
-Create events with a specified name and capacity.
-Users can book events while ensuring no capacity is exceeded and no duplicate bookings are allowed.
-Redis is used to cache the booking count for each event to optimize database queries.
-When a booking is made, RabbitMQ sends a message that simulates an email notification process, which is consumed and logged by the application.
+Create events with a specified name and capacity.<br>
+Users can book events while ensuring no capacity is exceeded and no duplicate bookings are allowed.<br>
+Redis is used to cache the booking count for each event to optimize database queries.<br>
+When a booking is made, RabbitMQ sends a message that simulates an email notification process, which is consumed and logged by the application.<br>
 
 
 3.Prerequisites :-
-Before setting up the application, ensure you have the following installed on your local machine(only working in your local machine im not hosting anything in cloud):
+Before setting up the application, ensure you have the following installed on your local machine(only working in your local machine im not hosting anything in cloud):<br>
 
 Node.js (version 14 or higher) ,
 MySQL (to store event and booking data) ,
