@@ -14,8 +14,21 @@ app.use("/bookings", bookingRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-initRabbitMQ().then(() => console.log("RabbitMQ initialized."));
-initConsumer().then(() => console.log("RabbitMQ Consumer initialized."));
+initRabbitMQ()
+  .then(() => {
+    console.log("RabbitMQ initialized.");
+  })
+  .catch((err) => {
+    console.error("RabbitMQ initialization failed:", err);
+  });
+
+initConsumer()
+  .then(() => {
+    console.log("RabbitMQ Consumer initialized.");
+  })
+  .catch((err) => {
+    console.error("RabbitMQ Consumer initialization failed:", err);
+  });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 PORT;

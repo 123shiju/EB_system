@@ -1,12 +1,30 @@
-const amqp = require("amqplib");
+const { initRabbitMQ, getChannel } = require("../Services/rabbitMQService");
 
-exports.initConsumer = async () => {
-  const connection = await amqp.connect("amqp://localhost");
-  const channel = await connection.createChannel();
-  await channel.assertQueue("emailQueue");
+async function initConsumer() {
+  try {
+    let channel = await initRabbitMQ();
 
-  channel.consume("emailQueue", (message) => {
-    console.log(`Email Notification: ${message.content.toString()}`);
-    channel.ack(message);
-  });
-};
+    if (channel) {
+      channel.consume("emailQueue", (message) => {
+        try {
+          console.log(`Email Notification: ${message.content.toString()}`);
+          channel.ack(message);
+        } catch (err) {
+          console.error("Error processing message:", err);
+
+          channel.nack(message, false, false);
+        }
+      });
+
+      console.log("Waiting for messages in 'emailQueue'...");
+    } else {
+      console.error("RabbitMQ channel is still not available.");
+    }
+  } catch (err) {
+    console.error("Error initializing consumer:", err);
+  }
+}
+
+initConsumer();
+
+module.exports = { initConsumer };
