@@ -44,10 +44,11 @@ mysql -u root -p<br>
 
 CREATE TABLE bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    event_id INT NOT NULL,
-    UNIQUE KEY unique_booking (user_id, event_id),
-    FOREIGN KEY (event_id) REFERENCES events(id)
+    username VARCHAR(255) NOT NULL,  
+    user_id INT NOT NULL,            
+    event_id INT NOT NULL,           
+    num_attendees INT NOT NULL,      
+    UNIQUE KEY unique_booking (user_id, event_id) 
 );<br>
 
 6.Set Up Redis :- <br>
